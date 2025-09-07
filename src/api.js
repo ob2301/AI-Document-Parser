@@ -6,12 +6,14 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration); //new openai api client
 
 export async function generateQuiz(text) { //construct the prompt that we will send to the llm
-  const prompt = `Generate 5 multiple-choice questions from the following text with 4 options each and mark the correct answer: \n\n${text}`;
+  const words = text.split(/\s+/).length;
+  const numQuestions = Math.min(5 + Math.floor(words/200),1000); //5 + 1 question per 200 words, max is 1000, can be changed depending on interview
+  const prompt = `Generate ${numQuestions} multiple-choice questions from the following text with 4 options each and mark the correct answer: \n\n${text}`;
 
   const response = await openai.createCompletion({ //completion endpoint
     model: "text-davinci-003", //gpt3.5
     prompt,
-    max_tokens: 500,//500 length for 5 responses
+    max_tokens: 500 + numQuestions * 50,//arbitrary max token limit, shouldnt be exceeded, already communicated to IT team
   });
 
   //parsing response
