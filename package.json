@@ -1,20 +1,18 @@
 {
-  "name": "ai-web-quiz-generator",
+  "name": "ai-quiz-generator",
   "version": "1.0.0",
-  "description": "A web app that generates quizzes from text input using an LLM and evaluates answers in real-time.",
-  "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ob2301/AI-Web-Quiz-Generator.git"
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "openai": "^4.0.0"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ob2301/AI-Web-Quiz-Generator/issues"
-  },
-  "homepage": "https://github.com/ob2301/AI-Web-Quiz-Generator#readme"
+  "devDependencies": {
+    "vite": "^4.0.0"
+  }
 }
