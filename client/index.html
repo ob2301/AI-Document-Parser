@@ -1,28 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>LangChain File Parser</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div id="app">
-      <h1>LangChain File Parser</h1>
+<head>
+  <meta charset="UTF-8">
+  <title>AI Document Parser</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>AI Document Parser</h1>
+    <textarea id="text-input" placeholder="Paste text here..."></textarea>
+    <button id="parse-text-btn">Parse Text</button>
 
-      <textarea id="textInput" placeholder="Paste text here..." rows="6"></textarea>
-      <button id="parseTextBtn">Parse Text</button>
+    <hr>
 
-      <hr />
+    <input type="file" id="file-input" multiple />
+    <button id="parse-file-btn">Parse Files</button>
 
-      <input type="file" id="fileInput" accept=".pdf,.docx,.txt" />
-      <button id="parseFileBtn">Parse File</button>
+    <h2>Output:</h2>
+    <pre id="output"></pre>
+  </div>
 
-      <div id="output">
-        <h2>Summary</h2>
-        <p id="summary"></p>
-      </div>
-    </div>
-
-    <script type="module" src="index.js"></script>
-  </body>
+  <script src="index.js"></script>
+</body>
 </html>

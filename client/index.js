@@ -1,13 +1,15 @@
-import { parseText, parseFile } from "./parser.js";
+import { parseText, parseFiles } from "./parser.js";
 
-document.getElementById("parseTextBtn").addEventListener("click", async () => {
-  const text = document.getElementById("textInput").value;
+const output = document.getElementById("output");
+
+document.getElementById("parse-text-btn").addEventListener("click", async () => {
+  const text = document.getElementById("text-input").value;
   const summary = await parseText(text);
-  document.getElementById("summary").innerText = summary;
+  output.textContent = summary;
 });
 
-document.getElementById("parseFileBtn").addEventListener("click", async () => {
-  const file = document.getElementById("fileInput").files[0];
-  const summary = await parseFile(file);
-  document.getElementById("summary").innerText = summary;
+document.getElementById("parse-file-btn").addEventListener("click", async () => {
+  const files = document.getElementById("file-input").files;
+  const summaries = await parseFiles(files);
+  output.textContent = JSON.stringify(summaries, null, 2);
 });

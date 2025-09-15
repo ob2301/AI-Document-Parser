@@ -1,17 +1,19 @@
+// server/app.js
 import express from "express";
-import multer from "multer";
 import cors from "cors";
+import multer from "multer";
 import api from "./api.js";
 
-const upload = multer({ dest: "uploads/" });
 const app = express();
+const upload = multer({ dest: "uploads/" });
 
 app.use(cors());
 app.use(express.json());
 
-// LangChain-powered routes
-app.post("/api/parseFile", upload.array("files"), api.parseFile);
-app.post("/api/parseText", api.parseText);
+// Routes
+app.post("/api/parse-file", upload.array("files"), api.parseFile);
+app.post("/api/parse-text", api.parseText);
 
+// Start server
 const PORT = 5000;
 app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));
