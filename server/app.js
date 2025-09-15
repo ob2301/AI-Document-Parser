@@ -1,26 +1,17 @@
-import React, { useState } from "react";
-import { generateQuiz } from "./api";
-import Quiz from "./Quiz";
+import express from "express";
+import multer from "multer";
+import cors from "cors";
+import api from "./api.js";
 
-export default function App() {
-  const [text, setText] = useState("");
-  const [questions, setQuestions] = useState([]);
+const upload = multer({ dest: "uploads/" });
+const app = express();
 
-  const handleGenerate = async () => {
-    const quiz = await generateQuiz(text);
-    setQuestions(quiz);
-  };
+app.use(cors());
+app.use(express.json());
 
-  return (
-    <div className="container">
-      <h1>AI Quiz Generator</h1>
-      <textarea
-        placeholder="Paste text here..."
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-      />
-      <button onClick={handleGenerate}>Generate Quiz</button>
-      {questions.length > 0 && <Quiz questions={questions} />}
-    </div>
-  );
-}
+// LangChain-powered routes
+app.post("/api/parseFile", upload.array("files"), api.parseFile);
+app.post("/api/parseText", api.parseText);
+
+const PORT = 5000;
+app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));

@@ -1,11 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Quiz Generator</title>
-</head>
-<body>
-  <div id="root"></div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>LangChain File Parser</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <h1>LangChain File Parser</h1>
+
+      <textarea id="textInput" placeholder="Paste text here..." rows="6"></textarea>
+      <button id="parseTextBtn">Parse Text</button>
+
+      <hr />
+
+      <input type="file" id="fileInput" accept=".pdf,.docx,.txt" />
+      <button id="parseFileBtn">Parse File</button>
+
+      <div id="output">
+        <h2>Summary</h2>
+        <p id="summary"></p>
+      </div>
+    </div>
+
+    <script type="module" src="index.js"></script>
+  </body>
 </html>

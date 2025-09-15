@@ -1,7 +1,13 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App";
-import "./style.css";
+import { parseText, parseFile } from "./parser.js";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App />);
+document.getElementById("parseTextBtn").addEventListener("click", async () => {
+  const text = document.getElementById("textInput").value;
+  const summary = await parseText(text);
+  document.getElementById("summary").innerText = summary;
+});
+
+document.getElementById("parseFileBtn").addEventListener("click", async () => {
+  const file = document.getElementById("fileInput").files[0];
+  const summary = await parseFile(file);
+  document.getElementById("summary").innerText = summary;
+});
